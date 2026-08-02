@@ -3943,3 +3943,101 @@ body[data-theme="light"] .logo-core {
     flex-basis: 40px;
   }
 }
+
+/* Targeted accessibility and enquiry improvements. */
+.site-nav a,
+.menu-toggle,
+.theme-toggle,
+.nav-cta {
+  min-height: 44px;
+}
+
+.site-nav a:focus-visible,
+.menu-toggle:focus-visible,
+.theme-toggle:focus-visible,
+.nav-cta:focus-visible,
+.button:focus-visible,
+.text-link:focus-visible {
+  outline: 3px solid var(--accent, #ff7a31);
+  outline-offset: 3px;
+}
+
+.project-form label,
+.form-header p,
+.form-note,
+.form-status,
+.project-form small {
+  font-size: max(12px, 0.78rem);
+}
+
+.form-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.whatsapp-slot {
+  margin-top: 12px;
+}
+
+.whatsapp-required {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.whatsapp-float {
+  position: fixed;
+  z-index: 90;
+  right: 20px;
+  bottom: 20px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: #167c4a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.26);
+}
+
+/* Content stays visible if JavaScript fails. */
+[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.js [data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html:not(.js) .capability-stage[data-reveal] > div,
+html:not(.js) .capability-stage[data-reveal] .stage-art {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (max-width: 560px) {
+  .whatsapp-float {
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal],
+  .js [data-reveal].revealed {
+    opacity: 1;
+    transform: none;
+  }
+}

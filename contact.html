@@ -7,7 +7,14 @@
       name="description"
       content="Start a project with Kakuma Digital Agency."
     />
-    <meta name="theme-color" content="#0D1224" />
+    <meta name="theme-color" content="#f7f9ff" />
+    <link rel="canonical" href="https://kakuma-digital-agency.vercel.app/contact.html" />
+    <meta property="og:title" content="Start a Project — Kakuma Digital Agency" />
+    <meta property="og:description" content="Share your website, branding, marketing or digital strategy project with KDA." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kakuma-digital-agency.vercel.app/contact.html" />
+    <meta property="og:image" content="https://kakuma-digital-agency.vercel.app/assets/logo/kda-main-logo.png" />
+<link rel="icon" href="assets/logo/favicon.png" />
     <title>Start a Project — Kakuma Digital Agency</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,15 +23,16 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script>document.documentElement.classList.add("js");</script>
   </head>
-  <body data-theme="dark">
+  <body data-theme="light">
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
     <div class="ambient-orb orb-blue" aria-hidden="true"></div>
     <div class="ambient-orb orb-orange" aria-hidden="true"></div>
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="Kakuma Digital Agency home"
-        ><img src="assets/logo/kda-main-logo.png" alt="Future of Kakuma Digital Agency"
+        ><img src="assets/logo/kda-main-logo-optimized.png" width="460" height="307" alt="Future of Kakuma Digital Agency"
       /></a>
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
         <a href="index.html">Home</a><a href="about.html">About</a
@@ -45,7 +53,7 @@
         </button>
       </div>
     </header>
-    <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
       <span class="toggle-sun">☼</span><span class="toggle-moon">◐</span>
     </button>
     <main id="main">
@@ -73,6 +81,9 @@
           <a class="text-link" href="mailto:kakuma.digital.agency@gmail.com"
             >kakuma.digital.agency@gmail.com <span>↗</span></a
           >
+          <div class="whatsapp-slot" data-whatsapp-slot>
+            <p class="whatsapp-required">WhatsApp option: verified KDA number required.</p>
+          </div>
           <div class="contact-points">
             <p><span>01</span> Share the goal</p>
             <p><span>02</span> Choose a service</p>
@@ -91,6 +102,13 @@
             value="kakuma.digital.agency@gmail.com"
           />
           <input type="hidden" name="submitted_at" value="" />
+          <label class="form-honeypot" aria-hidden="true"
+            >Leave this field empty<input
+              name="website"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+          /></label>
           <div class="form-header">
             <span>PROJECT BRIEF</span>
             <p>Fields marked * are required.</p>
@@ -101,33 +119,41 @@
                 required
                 name="name"
                 type="text"
+                minlength="2"
+                maxlength="100"
+                autocomplete="name"
                 placeholder="Your name" /></label
             ><label
               >Organisation / business<input
                 name="organisation"
                 type="text"
+                maxlength="120"
+                autocomplete="organization"
                 placeholder="Organisation name" /></label
             ><label
-              >Phone number *<input
+              >Phone or WhatsApp number *<input
                 required
                 name="phone"
                 type="tel"
-                placeholder="Your number" /></label
-            ><label
-              >WhatsApp number<input
-                name="whatsapp"
-                type="tel"
-                placeholder="If different" /></label
+                minlength="7"
+                maxlength="30"
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="Include country code if possible" /></label
             ><label
               >Email address *<input
                 required
                 name="email"
                 type="email"
+                maxlength="160"
+                autocomplete="email"
                 placeholder="you@example.com" /></label
             ><label
               >Location<input
                 name="location"
                 type="text"
+                maxlength="100"
+                autocomplete="address-level2"
                 placeholder="Kakuma, Kalobeyei, etc." /></label
             ><label
               >Service needed *<select required name="service">
@@ -157,13 +183,15 @@
                 name="attachment"
                 type="file"
                 accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-              /><small>Optional. The file will be included with your brief.</small></label
+              /><small>Optional. PDF, DOC, DOCX, JPG or PNG; maximum 2 MB.</small></label
             >
           </div>
           <label class="form-message"
             >Tell us about the project *<textarea
               required
               name="description"
+              minlength="20"
+              maxlength="4000"
               rows="5"
               placeholder="What would you like to achieve? Include anything useful."
             ></textarea></label
@@ -172,10 +200,11 @@
             <span aria-hidden="true">↗</span>
           </button>
           <p class="form-note">
-            Your brief will be sent directly to Kakuma Digital Agency. No email
-            app is required.
+            We aim to respond within two business days. Your details are used
+            only to review and reply to this enquiry. Do not include passwords
+            or other sensitive information.
           </p>
-          <p class="form-status" role="status" aria-live="polite"></p>
+          <p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
         </form>
       </section>
     </main>
@@ -184,7 +213,7 @@
         <div>
           <a class="brand footer-brand" href="index.html"
             ><img
-              src="assets/logo/kda-main-logo.png"
+              src="assets/logo/kda-main-logo-optimized.png" width="460" height="307"
               alt="Future of Kakuma Digital Agency"
           /></a>
           <p>Digital experiences for the future of Kakuma.</p>
@@ -206,8 +235,7 @@
         <p>BUILT IN TURKANA · MADE TO MOVE</p>
       </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="emailjs-config.js"></script>
+    <script src="site-config.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
