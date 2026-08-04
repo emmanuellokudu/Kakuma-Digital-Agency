@@ -1503,12 +1503,10 @@ h1 em {
 @keyframes work-card-float {
   0%,
   100% {
-    transform: perspective(700px) rotateY(-5deg) rotateX(2deg)
-      translateY(0);
+    transform: perspective(700px) rotateY(-5deg) rotateX(2deg) translateY(0);
   }
   50% {
-    transform: perspective(700px) rotateY(-2deg) rotateX(1deg)
-      translateY(-7px);
+    transform: perspective(700px) rotateY(-2deg) rotateX(1deg) translateY(-7px);
   }
 }
 
@@ -1887,14 +1885,6 @@ h1 em {
 .project-form textarea:focus {
   border-color: var(--blue-glow);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent);
-}
-.project-form input[type="file"] {
-  padding: 8px;
-  font-size: 10px;
-}
-.project-form small {
-  color: var(--muted);
-  font: 9px var(--sans);
 }
 .form-message {
   margin-top: 15px;
@@ -3965,8 +3955,7 @@ body[data-theme="light"] .logo-core {
 .project-form label,
 .form-header p,
 .form-note,
-.form-status,
-.project-form small {
+.form-status {
   font-size: max(12px, 0.78rem);
 }
 

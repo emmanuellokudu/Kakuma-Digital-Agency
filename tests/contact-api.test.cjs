@@ -38,11 +38,6 @@ test("rejects spam, invalid contact details and short descriptions", () => {
   assert.ok(result.errors.description);
 });
 
-test("rejects attachments larger than two megabytes", () => {
-  const result = handler.validate({ ...validBody, attachment: { name: "brief.pdf", type: "application/pdf", size: 2 * 1024 * 1024 + 1, content: "YWJj" } });
-  assert.ok(result.errors.attachment);
-});
-
 test("returns a safe configuration error when credentials are unavailable", async () => {
   const oldKey = process.env.RESEND_API_KEY;
   const oldFrom = process.env.CONTACT_FROM_EMAIL;

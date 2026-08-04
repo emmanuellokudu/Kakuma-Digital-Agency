@@ -1,6 +1,5 @@
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
-const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024;
 const attempts = new Map();
 
 const allowedServices = new Set([
@@ -10,14 +9,6 @@ const allowedServices = new Set([
   "Digital strategy & support",
   "Not sure yet",
 ]);
-const allowedFileTypes = new Set([
-  "application/pdf",
-  "application/msword",
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  "image/jpeg",
-  "image/png",
-]);
-
 function clean(value, maxLength) {
   return typeof value === "string"
     ? value.replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, maxLength)
@@ -56,20 +47,7 @@ function validate(body = {}) {
   if (!allowedServices.has(data.service)) errors.service = "Choose a valid service.";
   if (data.description.length < 20) errors.description = "Add at least 20 characters about the project.";
 
-  let attachment = null;
-  if (body.attachment) {
-    const name = clean(body.attachment.name, 150);
-    const type = clean(body.attachment.type, 120);
-    const content = typeof body.attachment.content === "string" ? body.attachment.content : "";
-    const size = Number(body.attachment.size);
-    if (!allowedFileTypes.has(type)) errors.attachment = "Use PDF, DOC, DOCX, JPG or PNG.";
-    else if (!Number.isFinite(size) || size < 1 || size > MAX_ATTACHMENT_BYTES) errors.attachment = "The file must be 2 MB or smaller.";
-    else if (!/^[A-Za-z0-9+/]+={0,2}$/.test(content)) errors.attachment = "The attachment could not be read.";
-    else if (Buffer.byteLength(content, "base64") > MAX_ATTACHMENT_BYTES) errors.attachment = "The file must be 2 MB or smaller.";
-    else attachment = { name, type, content };
-  }
-
-  return { data, errors, attachment };
+  return { data, errors };
 }
 
 function isRateLimited(ip) {
@@ -95,7 +73,7 @@ async function handler(request, response) {
   const ip = clean(request.headers["x-forwarded-for"]?.split(",")[0] || request.socket?.remoteAddress || "unknown", 80);
   if (isRateLimited(ip)) return json(response, 429, { ok: false, message: "Too many attempts. Please wait ten minutes or use email." });
 
-  const { data, errors, attachment } = validate(request.body);
+  const { data, errors } = validate(request.body);
   if (Object.keys(errors).length) return json(response, 400, { ok: false, message: "Please correct the highlighted fields.", errors });
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -116,8 +94,6 @@ async function handler(request, response) {
     subject: `New KDA project brief: ${data.service}`,
     html: `<h1>New project brief</h1><table>${rows}</table><h2>Project description</h2><p style="white-space:pre-wrap">${escapeHtml(data.description)}</p>`,
   };
-  if (attachment) payload.attachments = [{ filename: attachment.name, content: attachment.content }];
-
   try {
     const delivery = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -133,4 +109,3 @@ async function handler(request, response) {
 
 module.exports = handler;
 module.exports.validate = validate;
-module.exports.constants = { MAX_ATTACHMENT_BYTES };

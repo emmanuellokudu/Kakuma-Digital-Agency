@@ -1,19 +1,18 @@
 # Project enquiry form setup
 
-The form sends enquiries through the server-side Vercel function at `api/contact.js`. Private credentials are never included in browser files.
+The form sends enquiries directly from the browser through EmailJS.
 
-## Required Vercel environment variables
+## EmailJS setup
 
-1. Create a Resend account and verify a sending domain.
-2. In Vercel, open **Project Settings → Environment Variables**.
-3. Add:
-   - `RESEND_API_KEY`: the private Resend API key.
-   - `CONTACT_FROM_EMAIL`: an address on the verified sending domain, such as `enquiries@example.org`.
-   - `CONTACT_TO_EMAIL`: the inbox that should receive briefs. If omitted, the endpoint uses `kakuma.digital.agency@gmail.com`.
-4. Redeploy the project.
-5. Submit one real test brief and confirm that it arrives and that replying addresses the visitor's email.
+1. Create an EmailJS account and connect the inbox that should receive project briefs.
+2. Create an email template. Its variables can use the form field names: `name`, `organisation`, `phone`, `email`, `location`, `service`, `budget`, `deadline`, `description`, and `submitted_at`.
+3. Copy the Public Key, Service ID, and Template ID into the `emailjs` object in `site-config.js`.
+4. In the template, set **To Email** directly to `kakuma.digital.agency@gmail.com` and **Reply-To** to `{{email}}`. Do not use a visitor-controlled variable for the recipient address.
+5. Deploy the site, submit one real test brief, and confirm delivery and reply-to behavior.
 
-Until the first real delivery is confirmed, the site must not be described as having tested production delivery. The form returns a clear configuration error and preserves the visitor's fields when credentials are missing.
+Files are not collected through the enquiry form. If a project requires reference files, KDA can request them later through email or WhatsApp.
+
+The EmailJS public key is designed for browser use. Never add an EmailJS private key or mailbox password to this repository. Until the first real delivery is confirmed, the site must not be described as having tested production delivery. If any required ID is blank, the form shows a configuration error and preserves the visitor's fields.
 
 ## WhatsApp
 
@@ -25,11 +24,7 @@ When configured, the site automatically adds the contact-page link and floating 
 
 ## Built-in protections
 
-- Client- and server-side validation
+- Client-side validation
 - Hidden honeypot field
-- Five-attempt rate limit per ten minutes per IP (best-effort in serverless instances)
-- Two-megabyte attachment limit
-- PDF, DOC, DOCX, JPG and PNG allowlist
-- HTML escaping before email rendering
 - Duplicate-submission blocking in the browser
 - Generic visitor-facing delivery errors
