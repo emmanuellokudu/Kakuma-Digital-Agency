@@ -3674,7 +3674,7 @@ body[data-theme="light"] .site-footer a:not(.brand):hover {
   position: fixed;
   z-index: 100;
   right: max(22px, env(safe-area-inset-right));
-  bottom: max(22px, env(safe-area-inset-bottom));
+  bottom: calc(max(20px, env(safe-area-inset-bottom)) + 60px);
   width: 88px;
   height: 48px;
   padding: 4px;
@@ -3720,7 +3720,7 @@ body[data-theme="light"] .theme-toggle {
 @media (max-width: 650px) {
   .theme-toggle {
     right: max(14px, env(safe-area-inset-right));
-    bottom: max(14px, env(safe-area-inset-bottom));
+    bottom: calc(max(14px, env(safe-area-inset-bottom)) + 60px);
     width: 78px;
     height: 44px;
   }
@@ -3980,8 +3980,8 @@ body[data-theme="light"] .logo-core {
 .whatsapp-float {
   position: fixed;
   z-index: 90;
-  right: 20px;
-  bottom: 20px;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
   min-height: 48px;
   display: inline-flex;
   align-items: center;
@@ -4018,8 +4018,8 @@ html:not(.js) .capability-stage[data-reveal] .stage-art {
 
 @media (max-width: 560px) {
   .whatsapp-float {
-    right: 14px;
-    bottom: 14px;
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
   }
 }
 
