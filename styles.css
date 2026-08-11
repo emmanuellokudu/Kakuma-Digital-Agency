@@ -4023,6 +4023,28 @@ html:not(.js) .capability-stage[data-reveal] .stage-art {
   }
 }
 
+.home-team-portrait.has-photo::before,
+.home-team-portrait.has-photo::after,
+.team-avatar.has-photo::before,
+.team-avatar.has-photo::after {
+  display: none;
+}
+
+.home-team-portrait.has-photo img,
+.team-avatar.has-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-team-portrait.has-photo img {
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.home-team-card:hover .home-team-portrait.has-photo img {
+  transform: scale(1.045);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal],
   .js [data-reveal].revealed {
