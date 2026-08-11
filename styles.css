@@ -1405,6 +1405,13 @@ h1 em {
     var(--panel)
   );
 }
+.stage-balwa {
+  background: linear-gradient(
+    118deg,
+    color-mix(in srgb, #d59b2d 24%, var(--panel)),
+    var(--panel)
+  );
+}
 .stage-two {
   background: linear-gradient(
     118deg,
@@ -2915,6 +2922,14 @@ body[data-theme="light"] .toggle-sun {
   );
 }
 
+.stage-balwa {
+  background: linear-gradient(
+    118deg,
+    rgba(181, 127, 30, 0.48),
+    rgba(38, 29, 25, 0.92)
+  );
+}
+
 .stage-two {
   background: linear-gradient(
     118deg,
@@ -3583,6 +3598,10 @@ body[data-theme="light"] .stage-one {
   background: linear-gradient(145deg, #29477e, #17213c);
 }
 
+body[data-theme="light"] .stage-balwa {
+  background: linear-gradient(145deg, #71551f, #2b2224);
+}
+
 body[data-theme="light"] .stage-two {
   background: linear-gradient(145deg, #6a3b29, #251d29);
 }
@@ -4021,6 +4040,10 @@ html:not(.js) .capability-stage[data-reveal] .stage-art {
     right: max(14px, env(safe-area-inset-right));
     bottom: max(14px, env(safe-area-inset-bottom));
   }
+}
+
+.balwa-art img {
+  object-position: center 42%;
 }
 
 .home-team-portrait.has-photo::before,
