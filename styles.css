@@ -3800,6 +3800,7 @@ body[data-theme="light"] .logo-core img {
 }
 
 .hero-image {
+  width: clamp(215px, 30vw, 370px);
   padding: 0;
   overflow: hidden;
 }
