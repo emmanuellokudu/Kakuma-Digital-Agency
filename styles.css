@@ -3799,6 +3799,22 @@ body[data-theme="light"] .logo-core img {
   transition: filter 0.3s ease;
 }
 
+.hero-image {
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero-image img,
+body[data-theme="dark"] .hero-image img,
+body[data-theme="light"] .hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
 body[data-theme="light"] .logo-core {
   border-color: rgba(30, 58, 138, 0.18);
   background: #fff;
