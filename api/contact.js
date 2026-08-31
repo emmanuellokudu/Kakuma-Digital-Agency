@@ -3,11 +3,11 @@ const RATE_LIMIT_MAX = 5;
 const attempts = new Map();
 
 const allowedServices = new Set([
-  "Website design & development",
-  "Graphic design & brand identity",
-  "Social media management",
-  "Digital strategy & support",
-  "Not sure yet",
+  "Website Design and Development",
+  "Graphic Design and Branding",
+  "Social Media Management",
+  "Digital Support and Strategy",
+  "Not Sure Yet",
 ]);
 function clean(value, maxLength) {
   return typeof value === "string"
@@ -91,8 +91,8 @@ async function handler(request, response) {
     from: `KDA Website <${fromEmail}>`,
     to: [toEmail],
     reply_to: data.email,
-    subject: `New KDA project brief: ${data.service}`,
-    html: `<h1>New project brief</h1><table>${rows}</table><h2>Project description</h2><p style="white-space:pre-wrap">${escapeHtml(data.description)}</p>`,
+    subject: `New KDA project request: ${data.service}`,
+    html: `<h1>New project request</h1><table>${rows}</table><h2>Project details</h2><p style="white-space:pre-wrap">${escapeHtml(data.description)}</p>`,
   };
   try {
     const delivery = await fetch("https://api.resend.com/emails", {

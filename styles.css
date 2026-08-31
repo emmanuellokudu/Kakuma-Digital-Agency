@@ -1227,6 +1227,44 @@ h1 em {
   font-size: 16px;
   line-height: 1.8;
 }
+.vision-mission-section {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 78px;
+  align-items: start;
+}
+.vision-mission-grid {
+  display: grid;
+  gap: 18px;
+}
+.vision-mission-card {
+  min-height: 218px;
+  padding: 30px 32px;
+  border: 1px solid color-mix(in srgb, var(--blue-glow) 28%, var(--line));
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--surface) 88%, transparent),
+    color-mix(in srgb, var(--blue) 14%, var(--surface))
+  );
+  box-shadow: var(--shadow);
+}
+.vision-mission-card > span {
+  color: var(--blue-glow);
+  font: 10px var(--mono);
+  letter-spacing: 0.08em;
+}
+.vision-mission-card h3 {
+  margin: 20px 0 12px;
+  font-size: 28px;
+}
+.vision-mission-card blockquote {
+  max-width: 680px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
 .values-section {
   margin: 130px 0 0;
   background: color-mix(in srgb, var(--ink-2) 68%, transparent);
@@ -2017,6 +2055,7 @@ h1 em {
   }
   .process-layout,
   .manifesto,
+  .vision-mission-section,
   .story-panel,
   .contact-layout {
     grid-template-columns: 1fr;
@@ -2196,6 +2235,16 @@ h1 em {
   }
   .manifesto {
     gap: 36px;
+  }
+  .vision-mission-section {
+    gap: 32px;
+  }
+  .vision-mission-card {
+    min-height: 0;
+    padding: 26px 22px;
+  }
+  .vision-mission-card h3 {
+    font-size: 25px;
   }
   .manifesto-mark {
     width: 230px;
@@ -3605,6 +3654,11 @@ body[data-theme="light"] .service-cta {
 body[data-theme="light"] .mini-team-grid article,
 body[data-theme="light"] .stage-one {
   background: linear-gradient(145deg, #29477e, #17213c);
+}
+
+/* Unverified profile links are intentionally not shown to visitors. */
+.team-grid .social-icon.is-pending {
+  display: none;
 }
 
 body[data-theme="light"] .stage-balwa {

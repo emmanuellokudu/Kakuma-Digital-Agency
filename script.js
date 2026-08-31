@@ -191,7 +191,7 @@ projectForm?.addEventListener("submit", async (event) => {
   if (honeypot?.value) {
     projectForm.reset();
     setFormStatus(
-      "Thank you. Your project brief has been sent to Kakuma Digital Agency.",
+      "Thank you. Your project request has been sent to Kakuma Digital Agency.",
       "success",
     );
     return;
@@ -220,7 +220,7 @@ projectForm?.addEventListener("submit", async (event) => {
   formIsSending = true;
   if (submitButton) submitButton.disabled = true;
   if (submitLabel) submitLabel.textContent = "Sending…";
-  setFormStatus("Sending your project brief…");
+  setFormStatus("Sending your project request…");
   try {
     await window.emailjs.sendForm(
       emailjsConfig.serviceId,
@@ -230,17 +230,17 @@ projectForm?.addEventListener("submit", async (event) => {
     );
     projectForm.reset();
     setFormStatus(
-      "Thank you. Your project brief has been sent to Kakuma Digital Agency.",
+      "Thank you. Your project request has been sent to Kakuma Digital Agency.",
       "success",
     );
   } catch {
     setFormStatus(
-      "We could not send your brief. Your information is still here; please retry or use the email link.",
+      "We could not send your request. Your information is still here; please retry or use the email link.",
       "error",
     );
   } finally {
     formIsSending = false;
     if (submitButton) submitButton.disabled = false;
-    if (submitLabel) submitLabel.textContent = "Send project brief";
+    if (submitLabel) submitLabel.textContent = "Submit Project Request";
   }
 });

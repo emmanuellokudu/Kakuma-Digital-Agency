@@ -8,7 +8,7 @@ const validBody = {
   phone: "+254 700 000 000",
   email: "visitor@example.com",
   location: "Kakuma",
-  service: "Website design & development",
+  service: "Website Design and Development",
   budget: "KES 30,000 – 60,000",
   deadline: "30 August",
   description: "We need a clear and accessible website for our organisation.",
@@ -62,7 +62,7 @@ test("sends a validated brief through the configured provider", async () => {
   assert.equal(response.statusCode, 200);
   assert.equal(response.body.ok, true);
   assert.equal(outgoing.reply_to, validBody.email);
-  assert.match(outgoing.subject, /Website design/);
+  assert.match(outgoing.subject, /Website Design/);
   global.fetch = originalFetch;
   delete process.env.RESEND_API_KEY;
   delete process.env.CONTACT_FROM_EMAIL;
